@@ -6,6 +6,8 @@
  * Author:  Alexandre Torgue <alexandre.torgue@st.com> for STMicroelectronics.
  */
 
+#define DEBUG
+
 #include <linux/clk.h>
 #include <linux/kernel.h>
 #include <linux/gpio/consumer.h>
