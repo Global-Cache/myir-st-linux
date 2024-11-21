@@ -67,7 +67,7 @@
 		compatible = "snps,dwmac-mdio";
 		phy0_eth1: ethernet-phy@0 {
 			st,phy-reset-gpios = <&gpiob 10 GPIO_ACTIVE_HIGH>;
-			compatible = "ethernet-phy-ieee802.3-c22", "ethernet-phy-id0007.c0f1";
+			compatible = "ethernet-phy-ieee802.3-c22", "ethernet-phy-id0007.c0f1", "ethernet-phy-id001c.c912";
 			reg = <0>;
 		};
 	};
