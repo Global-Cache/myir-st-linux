@@ -72,3 +72,8 @@
 		};
 	};
 };
+
+&uart7 {
+	status = "disabled";
+};
+
