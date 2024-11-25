@@ -48,6 +48,23 @@
 		};
 	};
 
+    // user_io@0 {
+    //    compatible = "generic-uio,ui_pdrv";
+    // 	  interrupt-parent = <&gpiog>;
+    //    interrupts = <5 IRQ_TYPE_EDGE_BOTH>;
+    //    status = "okay";
+    // };
+
+	gpio-keys {
+		compatible = "gpio-keys";
+		#size-cells = <0>;
+		button-1 {
+			label = "sensor_in";
+			linux,code = <KEY_I>;
+			interrupt-parent = <&gpiog>;
+        	interrupts = <5 IRQ_TYPE_EDGE_BOTH>;
+		};
+	};
 };
 
 &eth1 {
@@ -80,4 +97,3 @@
 &eth2 {
 	status = "disabled";
 };
-
