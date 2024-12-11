@@ -56,7 +56,7 @@
 			linux,code = <KEY_I>;
 			interrupt-parent = <&gpiog>;
         	interrupts = <5 IRQ_TYPE_EDGE_BOTH>;
-			debounce-interval = <20>;
+			debounce-interval = <100>;
 		};
 	};
 
