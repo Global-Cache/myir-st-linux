@@ -6,6 +6,31 @@
 #include <dt-bindings/pinctrl/stm32-pinfunc.h>
 
 &pinctrl {
+	spi1_pins_a: spi1-0 {
+		pins1 {
+			pinmux = <STM32_PINMUX('C', 3, AF6)>, /* SPI1_SCK */
+					<STM32_PINMUX('A', 3, AF5)>; /* SPI1_MOSI */
+			bias-disable;
+			drive-push-pull;
+			slew-rate = <1>;
+			function = "spi";
+		};
+
+		pins2 {
+			pinmux = <STM32_PINMUX('A', 6, AF5)>; /* SPI1_MISO */
+			bias-disable;
+			function = "spi";
+		};
+
+	};
+
+	spi1_sleep_pins_a: spi1-sleep-0 {
+		pins {
+			pinmux = <STM32_PINMUX('C', 3, ANALOG)>, /* SPI1_SCK */
+					<STM32_PINMUX('A', 6, ANALOG)>, /* SPI1_MISO */
+					<STM32_PINMUX('A', 3, ANALOG)>; /* SPI1_MOSI */
+		};
+	};
 
 	adc1_usb_cc_pins_a: adc1-usb-cc-pins-0 {
 		pins {
@@ -265,9 +290,9 @@
 						<STM32_PINMUX('G', 0, ANALOG)>,    /* LCD_G5 */
 						<STM32_PINMUX('E', 12, ANALOG)>,   /* LCD_G6 */
 						<STM32_PINMUX('A', 15, ANALOG)>;   /* LCD_G7 */
-					         bias-disable;
-                                                drive-push-pull;
-                                                slew-rate = <1>;
+							 bias-disable;
+												drive-push-pull;
+												slew-rate = <1>;
 		};
 	};
 
