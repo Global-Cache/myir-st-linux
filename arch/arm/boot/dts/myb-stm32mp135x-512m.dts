@@ -47,12 +47,6 @@
 			no-map;
 		};
 	};
-
-	ir-dma {
-		compatible = "globalcache,ir-dma";
-		dma-names = "tx";
-		dmas = <&mdma 16 0x3 0x1200000a 0x48000008 0x00000020 1>;
-	};
 };
 
 &spi1 {
