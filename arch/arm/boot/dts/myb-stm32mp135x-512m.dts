@@ -72,3 +72,7 @@
 		};
 	};
 };
+
+&eth2 {
+	status = "disabled";
+};
