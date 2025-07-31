@@ -82,11 +82,6 @@
 	status = "disabled";
 };
 
-// disable uart7 to reclaim PE8
-&uart7 {
-	status = "disabled";
-};
-
 // disable i2s1 to reclaim PA6
 &i2s1 {
 	status = "disabled";
