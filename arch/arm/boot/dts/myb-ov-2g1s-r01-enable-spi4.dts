@@ -1,0 +1,57 @@
+/dts-v1/;
+/plugin/;
+
+#include <dt-bindings/gpio/gpio.h>
+#include <dt-bindings/pinctrl/stm32-pinfunc.h>
+
+/ {
+    compatible = "st,stm32mp135f-dk", "st,stm32mp135";
+
+    fragment@0 {
+        target = <&pinctrl>;
+        __overlay__ {
+            spi4_pins_a: spi4-0 {
+                pins1 {
+                    pinmux = <STM32_PINMUX('H', 9, AF5)>, /* SPI4_SCK */
+                            <STM32_PINMUX('E', 11, AF5)>; /* SPI4_MOSI */
+                    bias-disable;
+                    drive-push-pull;
+                    slew-rate = <1>;
+                    function = "spi";
+                };
+
+                pins2 {
+                    pinmux = <STM32_PINMUX('F', 3, AF5)>; /* SPI4_MISO */
+                    bias-disable;
+                    function = "spi";
+                };
+            };
+
+            spi4_sleep_pins_a: spi4-sleep-0 {
+                pins {
+                    pinmux = <STM32_PINMUX('H', 9, ANALOG)>, /* SPI4_SCK */
+                            <STM32_PINMUX('F', 3, ANALOG)>, /* SPI4_MISO */
+                            <STM32_PINMUX('E', 11, ANALOG)>; /* SPI4_MOSI */
+                };
+            };
+        };
+    };
+
+    fragment@1 {
+        target = <&spi4>;
+        __overlay__ {
+            pinctrl-names = "default";
+            pinctrl-0 = <&spi4_pins_a>;
+            pinctrl-1 = <&spi4_sleep_pins_a>;
+            status = "okay";
+            cs-gpios = <&gpiof 14 GPIO_ACTIVE_LOW>;  /* Chip select GPIO */
+            
+            spidev@0 {
+                compatible = "rohm,dh2228fv";
+                reg = <0>;  /* Chip Select 0 */
+                spi-max-frequency = <1000000>;
+                status = "okay";
+            };
+        };
+    };
+};
