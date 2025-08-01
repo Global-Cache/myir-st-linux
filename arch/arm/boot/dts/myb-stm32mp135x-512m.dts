@@ -72,6 +72,11 @@
 	};
 };
 
+// enable uart8
+&uart8 {
+	status = "okay";
+};
+
 &eth2 {
 	status = "disabled";
 };
