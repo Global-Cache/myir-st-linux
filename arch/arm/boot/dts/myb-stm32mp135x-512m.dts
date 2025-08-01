@@ -107,3 +107,51 @@
 &dcmipp_0 {
 	status = "disabled";
 };
+
+// disable i2s* (duplicate unit-address)
+&i2s2 {
+	status = "disabled";
+};
+
+&i2s3 {
+	status = "disabled";
+};
+
+// disable LCD
+&ltdc {
+	status = "disabled";
+};
+
+&ltdc_out_rgb {
+	status = "disabled";
+};
+
+&panel_ltdc_rgb {
+	status = "disabled";
+};
+
+// disable CAN2
+&m_can2 {
+	status = "disabled";
+};
+
+// disable audio
+&sound {
+	status = "disabled";
+};
+
+// disable unused i2c3 devices
+&i2c3 {
+	camera@30 {
+		status = "disabled";
+	};
+
+	audio-codec@a {
+		status = "disabled";
+	};
+
+	touchscreen@38 {
+		status = "disabled";
+	};
+};
+
