@@ -1157,6 +1157,7 @@ dtb-$(CONFIG_ARCH_STM32) += \
 	stm32h750i-art-pi.dtb \
 	stm32mp135f-dk.dtb \
 	stm32mp135f-dk-a7-examples.dtb \
+	myb-ov-2g1s-r02-enable-debug.dtbo \
 	myb-ov-2g1s-r02-enable-spi2.dtbo \
 	myb-ov-2g1s-r02-enable-spi4.dtbo \
 	myb-ov-2g1s-r02-enable-uart4.dtbo \
