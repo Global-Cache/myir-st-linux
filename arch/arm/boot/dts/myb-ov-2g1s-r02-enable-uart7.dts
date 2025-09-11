@@ -10,45 +10,45 @@
     fragment@0 {
         target = <&pinctrl>;
         __overlay__ {
-            uart8_pins_b: uart8-1 {
+            uart7_pins_b: uart7-1 {
                 pins1 {
-                    pinmux = <STM32_PINMUX('E', 1, AF8)>; /* UART8_TX */
+                    pinmux = <STM32_PINMUX('E', 8, AF7)>; /* UART7_TX (106) */
                     bias-disable;
                     drive-push-pull;
                     slew-rate = <0>;
                 };
                 pins2 {
-                    pinmux = <STM32_PINMUX('E', 0, AF8)>; /* UART8_RX */
+                    pinmux = <STM32_PINMUX('D', 11, AF13)>; /* UART7_RX (126) */
                     bias-pull-up;
                 };
             };
 
-            uart8_idle_pins_b: uart8-idle-1 {
+            uart7_idle_pins_b: uart7-idle-1 {
                 pins1 {
-                    pinmux = <STM32_PINMUX('E', 1, ANALOG)>; /* UART8_TX */
+                    pinmux = <STM32_PINMUX('E', 8, ANALOG)>; /* UART7_TX (106) */
                 };
                 pins2 {
-                    pinmux = <STM32_PINMUX('E', 0, AF8)>; /* UART8_RX */
+                    pinmux = <STM32_PINMUX('D', 11, AF13)>; /* UART7_RX (126) */
                     bias-pull-up;
                 };
             };
 
-            uart8_sleep_pins_b: uart8-sleep-1 {
+            uart7_sleep_pins_b: uart7-sleep-1 {
                 pins {
-                    pinmux = <STM32_PINMUX('E', 1, ANALOG)>, /* UART8_TX */
-                        <STM32_PINMUX('E', 0, ANALOG)>; /* UART8_RX */
+                    pinmux = <STM32_PINMUX('E', 8, ANALOG)>, /* UART7_TX (106) */
+                        <STM32_PINMUX('D', 11, ANALOG)>; /* UART7_RX (126) */
                 };
             };
         };
     };
 
     fragment@1 {
-        target = <&uart8>;
+        target = <&uart7>;
         __overlay__ {
             pinctrl-names = "default", "sleep", "idle";
-            pinctrl-0 = <&uart8_pins_b>;
-            pinctrl-1 = <&uart8_sleep_pins_b>;
-            pinctrl-2 = <&uart8_idle_pins_b>;
+            pinctrl-0 = <&uart7_pins_b>;
+            pinctrl-1 = <&uart7_sleep_pins_b>;
+            pinctrl-2 = <&uart7_idle_pins_b>;
             status = "okay";
         };
     };

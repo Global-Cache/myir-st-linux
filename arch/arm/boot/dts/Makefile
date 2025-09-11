@@ -1157,15 +1157,17 @@ dtb-$(CONFIG_ARCH_STM32) += \
 	stm32h750i-art-pi.dtb \
 	stm32mp135f-dk.dtb \
 	stm32mp135f-dk-a7-examples.dtb \
-	myb-ov-2g1s-r01-enable-spi2.dtbo \
-	myb-ov-2g1s-r01-enable-spi4.dtbo \
-	myb-ov-2g1s-r01-enable-uart4.dtbo \
-	myb-ov-2g1s-r01-enable-uart8.dtbo \
+	myb-ov-2g1s-r02-enable-spi2.dtbo \
+	myb-ov-2g1s-r02-enable-spi4.dtbo \
+	myb-ov-2g1s-r02-enable-uart4.dtbo \
+	myb-ov-2g1s-r02-enable-uart7.dtbo \
+	myb-ov-2g1s-r02-enable-uart8.dtbo \
 	myb-ov-generic-disable-spi1.dtbo \
 	myb-ov-generic-disable-spi2.dtbo \
 	myb-ov-generic-disable-spi3.dtbo \
 	myb-ov-generic-disable-spi4.dtbo \
 	myb-ov-generic-disable-uart4.dtbo \
+	myb-ov-generic-disable-uart7.dtbo \
 	myb-ov-generic-disable-uart8.dtbo \
 	myb-ov-proto-r03-enable-spi1.dtbo \
 	myb-ov-proto-r03-enable-spi3.dtbo \

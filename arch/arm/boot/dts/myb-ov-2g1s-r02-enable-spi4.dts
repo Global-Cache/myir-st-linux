@@ -12,8 +12,8 @@
         __overlay__ {
             spi4_pins_a: spi4-0 {
                 pins1 {
-                    pinmux = <STM32_PINMUX('H', 9, AF5)>, /* SPI4_SCK */
-                            <STM32_PINMUX('E', 11, AF5)>; /* SPI4_MOSI */
+                    pinmux = <STM32_PINMUX('H', 9, AF5)>, /* SPI4_SCK (132) */
+                            <STM32_PINMUX('E', 11, AF5)>; /* SPI4_MOSI (127) */
                     bias-disable;
                     drive-push-pull;
                     slew-rate = <1>;
@@ -21,7 +21,7 @@
                 };
 
                 pins2 {
-                    pinmux = <STM32_PINMUX('F', 3, AF5)>; /* SPI4_MISO */
+                    pinmux = <STM32_PINMUX('F', 3, AF5)>; /* SPI4_MISO (132) */
                     bias-disable;
                     function = "spi";
                 };
@@ -29,9 +29,9 @@
 
             spi4_sleep_pins_a: spi4-sleep-0 {
                 pins {
-                    pinmux = <STM32_PINMUX('H', 9, ANALOG)>, /* SPI4_SCK */
-                            <STM32_PINMUX('F', 3, ANALOG)>, /* SPI4_MISO */
-                            <STM32_PINMUX('E', 11, ANALOG)>; /* SPI4_MOSI */
+                    pinmux = <STM32_PINMUX('H', 9, ANALOG)>, /* SPI4_SCK (132) */
+                            <STM32_PINMUX('F', 3, ANALOG)>, /* SPI4_MISO (132) */
+                            <STM32_PINMUX('E', 11, ANALOG)>; /* SPI4_MOSI (127) */
                 };
             };
         };

@@ -1,0 +1,16 @@
+/dts-v1/;
+/plugin/;
+
+#include <dt-bindings/gpio/gpio.h>
+#include <dt-bindings/pinctrl/stm32-pinfunc.h>
+
+/ {
+    compatible = "st,stm32mp135f-dk", "st,stm32mp135";
+
+    fragment@0 {
+        target = <&uart7>;
+        __overlay__ {
+            status = "disabled";
+        };
+    };
+};

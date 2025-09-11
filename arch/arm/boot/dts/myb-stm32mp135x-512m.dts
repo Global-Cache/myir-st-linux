@@ -72,9 +72,19 @@
 	};
 };
 
-// enable uart8
+// disable uart8
 &uart8 {
-	status = "okay";
+	status = "disabled";
+};
+
+// disable uart4
+&uart4 {
+	status = "disabled";
+};
+
+// disable uart7
+&uart7 {
+	status = "disabled";
 };
 
 &eth2 {
