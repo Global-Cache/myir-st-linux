@@ -54,11 +54,9 @@
     };
 
     fragment@2 {
-        target-path = "/";
+        target-path = "/chosen";
         __overlay__ {
-            chosen {
-                stdout-path = "serial3:115200n8";
-            };
+            stdout-path = "serial3:115200n8";
         };
     };
 };
