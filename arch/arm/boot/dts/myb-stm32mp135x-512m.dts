@@ -79,9 +79,9 @@
 };
 
 // disable uart4
-&uart4 {
-	status = "disabled";
-};
+// &uart4 {
+// 	status = "disabled";
+// };
 
 // disable uart7
 &uart7 {
