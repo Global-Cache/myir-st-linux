@@ -1174,6 +1174,7 @@ dtb-$(CONFIG_ARCH_STM32) += \
 	myb-ov-proto-r03-enable-spi1.dtbo \
 	myb-ov-proto-r03-enable-spi3.dtbo \
 	myb-ov-proto-r03-enable-spi4.dtbo \
+	myb-ov-proto-r03-enable-uart8.dtbo \
 	myb-stm32mp135x-512m.dtb \
 	myb-stm32mp135x-256m.dtb \
 	myb-stm32mp135x-512m-hdmi.dtb \
