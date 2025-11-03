@@ -1,0 +1,55 @@
+/dts-v1/;
+/plugin/;
+
+#include <dt-bindings/gpio/gpio.h>
+#include <dt-bindings/pinctrl/stm32-pinfunc.h>
+
+/ {
+    compatible = "st,stm32mp135f-dk", "st,stm32mp135";
+
+    fragment@0 {
+        target = <&pinctrl>;
+        __overlay__ {
+            uart7_pins_b: uart7-1 {
+                pins1 {
+                    pinmux = <STM32_PINMUX('E', 8, AF7)>; /* UART7_TX (106) */
+                    bias-disable;
+                    drive-push-pull;
+                    slew-rate = <0>;
+                };
+                pins2 {
+                    pinmux = <STM32_PINMUX('D', 11, AF13)>; /* UART7_RX (126) */
+                    bias-pull-up;
+                };
+            };
+
+            uart7_idle_pins_b: uart7-idle-1 {
+                pins1 {
+                    pinmux = <STM32_PINMUX('E', 8, ANALOG)>; /* UART7_TX (106) */
+                };
+                pins2 {
+                    pinmux = <STM32_PINMUX('D', 11, AF13)>; /* UART7_RX (126) */
+                    bias-pull-up;
+                };
+            };
+
+            uart7_sleep_pins_b: uart7-sleep-1 {
+                pins {
+                    pinmux = <STM32_PINMUX('E', 8, ANALOG)>, /* UART7_TX (106) */
+                        <STM32_PINMUX('D', 11, ANALOG)>; /* UART7_RX (126) */
+                };
+            };
+        };
+    };
+
+    fragment@1 {
+        target = <&uart7>;
+        __overlay__ {
+            pinctrl-names = "default", "sleep", "idle";
+            pinctrl-0 = <&uart7_pins_b>;
+            pinctrl-1 = <&uart7_sleep_pins_b>;
+            pinctrl-2 = <&uart7_idle_pins_b>;
+            status = "okay";
+        };
+    };
+};

@@ -59,17 +59,6 @@
 		clock-frequency = <12000000>;
 	};
 
-	leds {
-		compatible = "gpio-leds";
-		led-blue {
-			function = LED_FUNCTION_HEARTBEAT;
-			color = <LED_COLOR_ID_BLUE>;
-			gpios = <&gpioh 12 GPIO_ACTIVE_LOW>;
-			linux,default-trigger = "heartbeat";
-			default-state = "off";
-		};
-	};
-
 	/*LCD Panel*/
 	panel_ltdc_rgb: panel_ltdc_rgb{
 			compatible = "myir,070tft-7";
@@ -264,51 +253,29 @@
 
 &eth1 {
 	status = "okay";
-	pinctrl-0 = <&eth1_rgmii_pins_a>;
-	pinctrl-1 = <&eth1_rgmii_sleep_pins_a>;
+	pinctrl-0 = <&eth1_rmii_pins_a>;
+	pinctrl-1 = <&eth1_rmii_sleep_pins_a>;
 	pinctrl-names = "default", "sleep";
-	phy-mode = "rgmii-id";
-	max-speed = <1000>;
+	phy-mode = "rmii";
+	max-speed = <100>;
 	phy-handle = <&phy0_eth1>;
 	// st,ext-phyclk;
-	// st,eth-clk-sel;
-	st,phy-reset-gpios = <&gpiob 10 GPIO_ACTIVE_HIGH>;
-
+	// st,eth-clk-sel = <1>;
+	
 	mdio1 {
 		#address-cells = <1>;
 		#size-cells = <0>;
 		compatible = "snps,dwmac-mdio";
 		phy0_eth1: ethernet-phy@0 {
-				compatible = "ethernet-phy-ieee802.3-c22";
-				reg = <0>;
+			st,phy-reset-gpios = <&gpiog 8 GPIO_ACTIVE_HIGH>;
+			compatible = "ethernet-phy-ieee802.3-c22", "ethernet-phy-id0007.c0f1", "ethernet-phy-id001c.c912";
+			reg = <0>;
 		};
 	};
 };
 
 &eth2 {
-	status = "okay";
-	pinctrl-0 = <&eth2_rgmii_pins_a>;
-	pinctrl-1 = <&eth2_rgmii_sleep_pins_a>;
-
-	pinctrl-names = "default", "sleep";
-	phy-mode = "rgmii-id";
-	max-speed = <1000>;
-	phy-handle = <&phy0_eth2>;
-	// st,ext-phyclk;
-	// st,eth-clk-sel;
-	phy-supply = <&v3v3_ao>;
-	st,phy-reset-gpios =  <&gpioh 5 GPIO_ACTIVE_HIGH>;
-	// reset-deassert-us = <1000>;
-	// reset-assert-us = <1000>;
-	mdio1 {
-		#address-cells = <1>;
-		#size-cells = <0>;
-		compatible = "snps,dwmac-mdio";
-		phy0_eth2: ethernet-phy@2 {
-				compatible = "ethernet-phy-ieee802.3-c22";
-				reg = <2>;
-		};
-	};
+	status = "disabled";
 };
 
 &i2c1 {

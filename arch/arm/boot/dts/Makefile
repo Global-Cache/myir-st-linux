@@ -1168,6 +1168,7 @@ dtb-$(CONFIG_ARCH_STM32) += \
 	myb-ov-generic-disable-spi3.dtbo \
 	myb-ov-generic-disable-spi4.dtbo \
 	myb-ov-generic-disable-uart4.dtbo \
+	myb-ov-generic-disable-uart5.dtbo \
 	myb-ov-generic-disable-uart7.dtbo \
 	myb-ov-generic-disable-uart8.dtbo \
 	myb-ov-proto-r03-enable-debug.dtbo \
@@ -1175,6 +1176,13 @@ dtb-$(CONFIG_ARCH_STM32) += \
 	myb-ov-proto-r03-enable-spi3.dtbo \
 	myb-ov-proto-r03-enable-spi4.dtbo \
 	myb-ov-proto-r03-enable-uart8.dtbo \
+	myb-ov-us3i-r04-enable-spi1.dtbo \
+	myb-ov-us3i-r04-enable-spi3.dtbo \
+	myb-ov-us3i-r04-enable-spi4.dtbo \
+	myb-ov-us3i-r04-enable-uart4.dtbo \
+	myb-ov-us3i-r04-enable-uart5.dtbo \
+	myb-ov-us3i-r04-enable-uart7.dtbo \
+	myb-ov-us3i-r04-enable-uart8.dtbo \
 	myb-stm32mp135x-512m.dtb \
 	myb-stm32mp135x-256m.dtb \
 	myb-stm32mp135x-512m-hdmi.dtb \
