@@ -19,6 +19,7 @@
 		serial1 = &uart7;
 		serial2 = &uart5;
 		serial3 = &uart8;
+		mmc1 = &sdmmc2; /* force eMMC to enumerate as mmcblk1 (sdmmc1 disabled) */
 	};
 
 	chosen {
@@ -74,16 +75,6 @@
 };
 
 &eth2 {
-	status = "disabled";
-};
-
-// disable uart8
-&uart8 {
-	status = "disabled";
-};
-
-// disable uart7
-&uart7 {
 	status = "disabled";
 };
 
@@ -163,5 +154,20 @@
 
 // disable &adc_1 (PF12 conflict)
 &adc_1 {
+	status = "disabled";
+};
+
+// disable sdmmc1 (SD card) - PC10/PD2 conflict with usart3
+&sdmmc1 {
+	status = "disabled";
+};
+
+// disable uart7
+&uart7 {
+	status = "disabled";
+};
+
+// disable uart8
+&uart8 {
 	status = "disabled";
 };

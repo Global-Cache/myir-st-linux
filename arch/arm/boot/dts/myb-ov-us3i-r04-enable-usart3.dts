@@ -1,0 +1,55 @@
+/dts-v1/;
+/plugin/;
+
+#include <dt-bindings/gpio/gpio.h>
+#include <dt-bindings/pinctrl/stm32-pinfunc.h>
+
+/ {
+    compatible = "st,stm32mp135f-dk", "st,stm32mp135";
+
+    fragment@0 {
+        target = <&pinctrl>;
+        __overlay__ {
+            usart3_pins_b: usart3-1 {
+                pins1 {
+                    pinmux = <STM32_PINMUX('C', 10, AF7)>; /* USART3_TX */
+                    bias-disable;
+                    drive-push-pull;
+                    slew-rate = <0>;
+                };
+                pins2 {
+                    pinmux = <STM32_PINMUX('D', 2, AF7)>; /* USART3_RX */
+                    bias-disable;
+                };
+            };
+
+            usart3_idle_pins_b: usart3-idle-1 {
+                pins1 {
+                    pinmux = <STM32_PINMUX('C', 10, ANALOG)>; /* USART3_TX */
+                };
+                pins2 {
+                    pinmux = <STM32_PINMUX('D', 2, AF7)>; /* USART3_RX */
+                    bias-disable;
+                };
+            };
+
+            usart3_sleep_pins_b: usart3-sleep-1 {
+                pins {
+                    pinmux = <STM32_PINMUX('C', 10, ANALOG)>, /* USART3_TX */
+                             <STM32_PINMUX('D', 2, ANALOG)>; /* USART3_RX */
+                };
+            };
+        };
+    };
+
+    fragment@1 {
+        target = <&usart3>;
+        __overlay__ {
+            pinctrl-names = "default", "sleep", "idle";
+            pinctrl-0 = <&usart3_pins_b>;
+            pinctrl-1 = <&usart3_sleep_pins_b>;
+            pinctrl-2 = <&usart3_idle_pins_b>;
+            status = "okay";
+        };
+    };
+};

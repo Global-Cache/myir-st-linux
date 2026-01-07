@@ -1,0 +1,48 @@
+/dts-v1/;
+/plugin/;
+
+#include <dt-bindings/gpio/gpio.h>
+#include <dt-bindings/pinctrl/stm32-pinfunc.h>
+
+/ {
+    compatible = "st,stm32mp135f-dk", "st,stm32mp135";
+
+    fragment@0 {
+        target = <&pinctrl>;
+        __overlay__ {
+            usart6_pins_b: usart6-1 {
+                pins {
+                    /* pinmux = <STM32_PINMUX('G', 14, AF7)>; USART6_TX - Conflicts with ETH1_TXD1 (Row 57) */
+                    pinmux = <STM32_PINMUX('G', 9, AF7)>; /* USART6_RX */
+                    bias-disable;
+                };
+            };
+
+            usart6_idle_pins_b: usart6-idle-1 {
+                pins {
+                    /* pinmux = <STM32_PINMUX('G', 14, ANALOG)>; USART6_TX - Conflicts with ETH1_TXD1 */
+                    pinmux = <STM32_PINMUX('G', 9, AF7)>; /* USART6_RX */
+                    bias-disable;
+                };
+            };
+
+            usart6_sleep_pins_b: usart6-sleep-1 {
+                pins {
+                    /* <STM32_PINMUX('G', 14, ANALOG)>, USART6_TX - Conflicts with ETH1_TXD1 */
+                    pinmux = <STM32_PINMUX('G', 9, ANALOG)>; /* USART6_RX */
+                };
+            };
+        };
+    };
+
+    fragment@1 {
+        target = <&usart6>;
+        __overlay__ {
+            pinctrl-names = "default", "sleep", "idle";
+            pinctrl-0 = <&usart6_pins_b>;
+            pinctrl-1 = <&usart6_sleep_pins_b>;
+            pinctrl-2 = <&usart6_idle_pins_b>;
+            status = "okay";
+        };
+    };
+};

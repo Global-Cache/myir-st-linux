@@ -1183,6 +1183,10 @@ dtb-$(CONFIG_ARCH_STM32) += \
 	myb-ov-us3i-r04-enable-uart5.dtbo \
 	myb-ov-us3i-r04-enable-uart7.dtbo \
 	myb-ov-us3i-r04-enable-uart8.dtbo \
+	myb-ov-us3i-r04-enable-usart1.dtbo \
+	myb-ov-us3i-r04-enable-usart2.dtbo \
+	myb-ov-us3i-r04-enable-usart3.dtbo \
+	myb-ov-us3i-r04-enable-usart6.dtbo \
 	myb-stm32mp135x-512m.dtb \
 	myb-stm32mp135x-256m.dtb \
 	myb-stm32mp135x-512m-hdmi.dtb \

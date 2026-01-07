@@ -1,0 +1,66 @@
+/dts-v1/;
+/plugin/;
+
+#include <dt-bindings/gpio/gpio.h>
+#include <dt-bindings/pinctrl/stm32-pinfunc.h>
+
+/ {
+    compatible = "st,stm32mp135f-dk", "st,stm32mp135";
+
+    fragment@0 {
+        target = <&pinctrl>;
+        __overlay__ {
+            usart2_pins_b: usart2-1 {
+                pins1 {
+                    /* pinmux = <STM32_PINMUX('H', 12, AF1)>, USART2_TX - Conflicts with MOD 1 (Row 41) */
+                    pinmux = <STM32_PINMUX('D', 4, AF3)>; /* USART2_RTS */
+                    bias-disable;
+                    drive-push-pull;
+                    slew-rate = <0>;
+                };
+                pins2 {
+                    pinmux = <STM32_PINMUX('D', 15, AF1)>; /* USART2_RX */
+                             /* <STM32_PINMUX('E', 11, AF2)>; USART2_CTS_NSS - Conflicts with SPI4_MOSI (Row 127) */
+                    bias-disable;
+                };
+            };
+
+            usart2_idle_pins_b: usart2-idle-1 {
+                pins1 {
+                    /* pinmux = <STM32_PINMUX('H', 12, ANALOG)>, USART2_TX - Conflicts with MOD 1 */
+                    /* pinmux = <STM32_PINMUX('E', 11, ANALOG)>; USART2_CTS_NSS - Conflicts with SPI4_MOSI */
+                };
+                pins2 {
+                    pinmux = <STM32_PINMUX('D', 4, AF3)>; /* USART2_RTS */
+                    bias-disable;
+                    drive-push-pull;
+                    slew-rate = <0>;
+                };
+                pins3 {
+                    pinmux = <STM32_PINMUX('D', 15, AF1)>; /* USART2_RX */
+                    bias-disable;
+                };
+            };
+
+            usart2_sleep_pins_b: usart2-sleep-1 {
+                pins {
+                    /* <STM32_PINMUX('H', 12, ANALOG)>, USART2_TX - Conflicts with MOD 1 */
+                    pinmux = <STM32_PINMUX('D', 4, ANALOG)>, /* USART2_RTS */
+                             <STM32_PINMUX('D', 15, ANALOG)>; /* USART2_RX */
+                    /* <STM32_PINMUX('E', 11, ANALOG)>; USART2_CTS_NSS - Conflicts with SPI4_MOSI */
+                };
+            };
+        };
+    };
+
+    fragment@1 {
+        target = <&usart2>;
+        __overlay__ {
+            pinctrl-names = "default", "sleep", "idle";
+            pinctrl-0 = <&usart2_pins_b>;
+            pinctrl-1 = <&usart2_sleep_pins_b>;
+            pinctrl-2 = <&usart2_idle_pins_b>;
+            status = "okay";
+        };
+    };
+};
