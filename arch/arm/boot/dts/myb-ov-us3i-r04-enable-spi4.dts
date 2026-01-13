@@ -44,7 +44,7 @@
             pinctrl-0 = <&spi4_pins_a>;
             pinctrl-1 = <&spi4_sleep_pins_a>;
             status = "okay";
-            cs-gpios = <&gpiof 7 GPIO_ACTIVE_LOW>;  /* Chip select GPIO */
+            cs-gpios = <&gpioa 5 GPIO_ACTIVE_LOW>;  /* Chip select GPIO */
             
             spidev@0 {
                 compatible = "rohm,dh2228fv";
