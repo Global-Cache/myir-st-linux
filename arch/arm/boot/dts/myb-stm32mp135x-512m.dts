@@ -19,6 +19,10 @@
 		serial1 = &uart7;
 		serial2 = &uart5;
 		serial3 = &uart8;
+		serial4 = &usart1;
+		serial5 = &usart2;
+		serial6 = &usart3;
+		serial7 = &usart6;
 		mmc1 = &sdmmc2; /* force eMMC to enumerate as mmcblk1 (sdmmc1 disabled) */
 	};
 
